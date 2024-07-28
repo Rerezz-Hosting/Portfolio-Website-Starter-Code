@@ -1,61 +1,158 @@
+@import url("https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-	background: #222;
-	margin: 20px;
-	font-family: "Roboto", sans-serif;
+  --color: rgba(30, 30, 30);
+  --bgColor: rgb(215, 215, 215);
+  min-height: 100vh;
+
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+  padding: 2rem;
+
+  font-family: "Oxygen", sans-serif;
+  color: var(--color);
+  background: var(--bgColor);
 }
-.card {
-	border: 2px solid #ccc;
-	border-radius: 10px;
-	padding: 20px;
-	width: 350px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cfilter id='space'%3E%3CfeTurbulence baseFrequency='0.1'%3E%3C/feTurbulence%3E%3CfeColorMatrix values='0.3 -4.8 2.6 -5 -1.5 0.5 3.1 -4.2 1 -4 3.7 -2.4 -0.3 -4 -3.7 -4.4 3.9 -4.9 -0.6 4.7'%3E%3C/feColorMatrix%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23fff'%3E%3C/rect%3E%3Crect width='100%25' height='100%25' filter='url(%23space)'%3E%3C/rect%3E%3C/svg%3E");
-}
+
 h1 {
-	color: #fff;
-}
-li {
-	/* Default bullets style erased */
-	list-style: none;
-/* 	cursor:pointer;
-	-webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; */
+  text-align: center;
 }
 
+ol {
+  width: min(60rem, 90%);
+  margin-inline: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  list-style: none;
+  counter-reset: cardnr;
+  justify-content: center;
+}
+
+li {
+  --frontColor: white;
+  --width: 10em;
+  --inlineP: 0.5rem;
+  --borderR: 4rem;
+  --arrowW: 2rem;
+  --arrowH: 1.5rem;
+
+  counter-increment: cardnr;
+  width: calc(var(--width) - var(--inlineP) * 2);
+  display: grid;
+  grid-template:
+    "icon" var(--borderR)
+    "title"
+    "descr" 1fr;
+  margin-inline: var(--inlineP);
+  margin-bottom: calc(var(--borderR));
+  position: relative;
+}
+li .icon,
+li .title,
+li .descr {
+  background: var(--frontColor);
+  padding-inline: 1rem;
+  padding-bottom: 1rem;
+}
+li .icon,
+li .title {
+  color: var(--accent-color);
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+li .title,
+li .descr {
+  filter: drop-shadow(0.125rem 0.125rem 0.075rem rgba(0, 0, 0, 0.25));
+}
+li .icon {
+  grid-area: icon;
+  font-size: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--borderR) 0 0 0;
+  position: relative;
+}
+
+li .title {
+  grid-area: title;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+li .descr {
+  grid-area: descr;
+  font-size: 0.85rem;
+  text-align: center;
+}
+li .descr::before {
+  content: "";
+  width: var(--arrowW);
+  height: var(--arrowH);
+  position: absolute;
+  right: 1.5rem;
+  top: 100%;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+li::after {
+  content: counter(cardnr, decimal-leading-zero);
+  position: absolute;
+  z-index: -1;
+
+  left: calc(var(--inlineP) * -1);
+  right: calc(var(--inlineP) * -1);
+  top: var(--borderR);
+  bottom: calc(var(--borderR) * -1);
+
+  display: flex;
+  align-items: flex-end;
+  background: var(--accent-color);
+  background-image: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.25),
+    transparent 25% 75%,
+    rgba(0, 0, 0, 0.25)
+  );
+  border-radius: 0 0 var(--borderR) 0;
+
+  --pad: 1rem;
+  padding: var(--pad);
+  font-size: calc(var(--borderR) - var(--pad) * 2);
+  color: white;
+}
 li::before {
-	/* Unicode for a bullet or nothing */
-	content: "";
+  content: "";
+  position: absolute;
+  height: var(--borderR);
+  top: calc(100% + var(--borderR) - 2px);
+  left: calc(var(--inlineP) * -1);
+  right: calc(var(--inlineP) * -1);
+  border-radius: 0 var(--borderR) 0 0;
 
-	/* Styles for Indentation*/
-	height: 10px;
-	width: 10px;
-	background: violet;
-	display: inline-block;
-	margin-left: -1em;
-	margin-right: 0.5em;
-	margin-bottom: 1px;
-	border-radius: 50%;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cfilter id='filter-cjl800yec'%3E%3CfeTurbulence baseFrequency='0.4' numOctaves='3' seed='1'%3E%3C/feTurbulence%3E%3CfeColorMatrix class='anim' type='hueRotate' values='0'%3E%3Canimate attributeName='values' from='0' to='360' dur='4s' repeatCount='indefinite'%3E%3C/animate%3E%3C/feColorMatrix%3E%3CfeColorMatrix values='-0.5 3.6 0.4 -0.1 2.7 -0.7 0.3 -1.1 1.2 0.4 -4.5 2.4 3.3 -3.7 -1.3 -0.7 -0.4 -4.3 4.3 1.6'%3E%3C/feColorMatrix%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='rgb(178,3,4)' class='bgRect'%3E%3C/rect%3E%3Crect width='100%25' height='100%25' filter='url(%23filter-cjl800yec)'%3E%3C/rect%3E%3C/svg%3E");
-	box-shadow: inset 1px 1px 2px rgba(255, 255, 100, 0.7),
-		0 0 9px rgba(255, 255, 255, 0.2), 0 0 7px rgba(255, 255, 155, 0.5);
+  background-image: linear-gradient(var(--accent-color), transparent 60%);
+  opacity: 0.5;
+  filter: blur(2px);
 }
 
-li {
-	color: #fff;
+.credits {
+  margin-top: 2rem;
+  text-align: right;
 }
-
-li.done {
-	text-decoration: line-through;
-}
-li.done:before {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cfilter id='filter-gdb42amw'%3E%3CfeTurbulence baseFrequency='0.2' numOctaves='5' seed='26' /%3E%3CfeColorMatrix type='hueRotate' values='0'%3E%3Canimate attributeName='values' from='0' to='360' dur='10s' repeatCount='indefinite' /%3E%3C/feColorMatrix%3E%3CfeColorMatrix values='-2.1 4.6 -4.1 2 -3.6 -3.3 -1.2 0.3 1.5 0.3 -1.6 0.8 2.8 3.6 2.8 -0.9 -0.7 4.3 1.2 -0.9'%3E%3C/feColorMatrix%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='rgb(3,10,131)' class='bgRect'%3E%3C/rect%3E%3Crect width='100%25' height='100%25' filter='url(%23filter-gdb42amw)'%3E%3C/rect%3E%3C/svg%3E");
-	box-shadow: inset 1px 1px 2px rgba(0, 0, 100, 0.7),
-		0 0 7px rgba(255, 255, 255, 0.2), 0 0 5px rgba(255, 255, 155, 0.5);
-}
+.credits a {
+  color: var(--color);
+	}
