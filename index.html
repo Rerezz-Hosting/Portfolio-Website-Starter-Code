@@ -1,50 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>XYREZZ OFFICIAL STORE</title>
-  <link rel="stylesheet" href="./style.css">
+<html Lang="en"
 
+<head>
+    <meta charset="UTf-8">
+    <meta name="viewport" content="width=device-width,inital-scale=1,0">
+    <link rel="style" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.mun.css" rel="style">
+    <title>LOGIN FROM</title>
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
-<h1>RAM LIST PANEL PETRODACTYL</h1>
-<ol>
-    <li style="--accent-color:#0D6EFD">
-        <div class="icon"><i class="fa-brands fa-shop"></i></div>
-        <div class="title">PAKER I</div>
-        <div class="descr"><p> SPESIFIKASI </p>
-        <p align="left"><b> RAM : 1000/1GB </p>
-        <p align="left"><b> DISK : 1000/1GB </p>
-        <p align="left"><b> CPU : 50% </p>
-        <p align="left"><b> HARGA </p>
-        <p align="left"><b> Rp 1.000</p></div>
-    </li>
-    <li style="--accent-color:#6710F5">
-        <div class="icon"><i class="fa-brands fa-store"></i></div>
-        <div class="title">HTML 5</div>
-        <div class="descr">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-    </li>
-    <li style="--accent-color:#6F42C1">
-        <div class="icon"><i class="fa-brands fa-ztore"></i></div>
-        <div class="title">CSS 3</div>
-        <div class="descr">Lorem ipsum dolor sit.</div>
-    </li>
-    <li style="--accent-color:#D63384">
-        <div class="icon"><i class="fa-brands fa-store"></i></div>
-        <div class="title">Javascript</div>
-        <div class="descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor laboriosam odio alias.</div>
-    </li>
-    <li style="--accent-color:#DC3545">
-        <div class="icon"><i class="fa-brands fa-store"></i></div>
-        <div class="title">Github</div>
-        <div class="descr">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-    </li>
-</ol>
-<div class="credits">
-    <a target="_blank" href="https://www.freepik.com/premium-vector/business-infographics-template-with-five-steps_6124808">inspired by</a>
-</div>
-<!-- partial -->
-  
+    <div class="wrapper">
+        <h2>WELCOME</h2>
+        <form action="#">
+            <div class="input-field">
+                <input type="email" id="email" placeholder="Username" required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-failed">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            <a href="#" class="forget">
+                <p>Forget Password?</p>
+            </a>
+            <button type="submit" class="login">Login</button>
+            <p>Don't have an account? <a href="#" class="sing-up">sing up</a></p>
+        </form>
+    </div>
 </body>
 </html>
